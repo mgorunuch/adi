@@ -125,22 +125,105 @@ export default function Roadmap() {
         </div>
 
         {/* Growth Loop */}
-        <div className="max-w-4xl mx-auto px-12 lg:px-16 pb-12 lg:pb-16">
-          <div className="border-l-4 border-brand pl-6 space-y-4">
-            <div className="text-sm font-semibold text-brand uppercase tracking-wider">
+        <div className="max-w-5xl mx-auto px-12 lg:px-16 pb-12 lg:pb-16">
+          <div className="space-y-8">
+            <div className="text-sm font-semibold text-brand uppercase tracking-wider text-center">
               Growth Loop
             </div>
-            <div className="flex items-center flex-wrap gap-2 text-base text-muted-foreground">
-              <span>Usage</span>
-              <span className="text-brand">→</span>
-              <span>PRs</span>
-              <span className="text-brand">→</span>
-              <span>Visibility</span>
-              <span className="text-brand">→</span>
-              <span>Teams</span>
-              <span className="text-brand">→</span>
-              <span>Features</span>
-              <span className="text-brand text-xl">↻</span>
+
+            {/* Circular Flow Chart with SVG */}
+            <div className="relative w-full max-w-lg mx-auto" style={{ height: '400px' }}>
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+                {/* Circular path with arrows */}
+                <defs>
+                  <marker
+                    id="arrowhead"
+                    markerWidth="10"
+                    markerHeight="10"
+                    refX="9"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <polygon points="0 0, 10 3, 0 6" fill="rgb(168, 85, 247)" />
+                  </marker>
+                </defs>
+
+                {/* Circle path */}
+                {[
+                  { angle: -90 },
+                  { angle: -18 },
+                  { angle: 54 },
+                  { angle: 126 },
+                  { angle: 198 }
+                ].map((node, index, arr) => {
+                  const radius = 130;
+                  const cx = 200;
+                  const cy = 200;
+
+                  const x1 = cx + radius * Math.cos((node.angle * Math.PI) / 180);
+                  const y1 = cy + radius * Math.sin((node.angle * Math.PI) / 180);
+
+                  const nextAngle = arr[(index + 1) % arr.length].angle;
+                  const x2 = cx + radius * Math.cos((nextAngle * Math.PI) / 180);
+                  const y2 = cy + radius * Math.sin((nextAngle * Math.PI) / 180);
+
+                  const midAngle = (node.angle + nextAngle) / 2;
+                  const controlRadius = radius * 1.0;
+                  const controlX = cx + controlRadius * Math.cos((midAngle * Math.PI) / 180);
+                  const controlY = cy + controlRadius * Math.sin((midAngle * Math.PI) / 180);
+
+                  return (
+                    <path
+                      key={index}
+                      d={`M ${x1} ${y1} Q ${controlX} ${controlY} ${x2} ${y2}`}
+                      stroke="rgb(168, 85, 247)"
+                      strokeWidth="2"
+                      fill="none"
+                      markerEnd="url(#arrowhead)"
+                      opacity="0.4"
+                    />
+                  );
+                })}
+
+                {/* Center circle */}
+                <circle cx="200" cy="200" r="40" fill="rgb(168, 85, 247)" fillOpacity="0.1" stroke="rgb(168, 85, 247)" strokeWidth="2" />
+              </svg>
+
+              {/* Center Loop Icon */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-4xl text-brand">↻</span>
+              </div>
+
+              {/* Nodes positioned in circle */}
+              {[
+                { label: 'Usage', angle: -90 },
+                { label: 'PRs', angle: -18 },
+                { label: 'Visibility', angle: 54 },
+                { label: 'Teams', angle: 126 },
+                { label: 'Features', angle: 198 }
+              ].map((node) => {
+                const radius = 130;
+                const x = 200 + radius * Math.cos((node.angle * Math.PI) / 180);
+                const y = 200 + radius * Math.sin((node.angle * Math.PI) / 180);
+
+                return (
+                  <div
+                    key={node.label}
+                    className="absolute"
+                    style={{
+                      left: `${(x / 400) * 100}%`,
+                      top: `${(y / 400) * 100}%`,
+                      transform: 'translate(-50%, -50%)'
+                    }}
+                  >
+                    <div className="px-4 py-2 bg-background border-2 border-brand/40 rounded-lg shadow-lg">
+                      <div className="text-sm font-semibold text-foreground whitespace-nowrap">
+                        {node.label}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function UnfairInsight() {
       <div className="p-8 lg:p-12 border-b border-brand/10">
         <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
           60% of your backlog is{' '}
-          <span className="text-brand bg-brand/10 px-2 py-1 rounded">AI-solvable</span> today
+          <span className="text-brand border-l-4 border-brand pl-3">AI-solvable</span> today
         </h2>
       </div>
 
@@ -97,8 +97,8 @@ export default function UnfairInsight() {
               </LineChart>
             </ResponsiveContainer>
             <div className="text-center mt-2">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand/10 border border-brand/20 rounded-full">
-                <div className="w-3 h-3 rounded-full bg-brand animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 border-l-4 border-brand">
+                <div className="w-3 h-3 bg-brand animate-pulse" />
                 <span className="text-sm font-semibold text-brand">12× more issues resolved with AI</span>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function UnfairInsight() {
         <div className="p-8 lg:p-12 xl:p-16 flex flex-col justify-center space-y-8">
           {/* Research data */}
           <div className="space-y-4">
-            <div className="inline-block px-3 py-1 bg-brand/10 border border-brand/20 rounded-full text-xs font-semibold text-brand uppercase tracking-wide">
+            <div className="inline-block border-l-4 border-brand pl-3 text-xs font-semibold text-brand uppercase tracking-wide">
               IEEE DataPort Study, 2024
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
@@ -152,7 +152,7 @@ export default function UnfairInsight() {
           </div>
 
           {/* Time metrics */}
-          <div className="bg-gradient-to-br from-brand/5 to-brand/10 border border-brand/20 rounded-lg p-5 space-y-3">
+          <div className="border-l-4 border-brand pl-5 space-y-3">
             <div className="text-sm font-semibold text-brand uppercase tracking-wider">
               Industry Time Metrics
             </div>

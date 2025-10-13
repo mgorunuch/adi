@@ -1,101 +1,125 @@
 export default function Roadmap() {
-  const stages = [
+  const timeline = [
+    { year: '2025', quarter: 'Q3' },
+    { year: '', quarter: 'Q4' },
+    { year: '2026', quarter: 'Q1' },
+    { year: '', quarter: 'Q2' },
+    { year: '', quarter: 'Q3' },
+    { year: '', quarter: 'Q4' },
+    { year: '2027', quarter: 'Q1' },
+    { year: '', quarter: 'Q2' }
+  ];
+
+  const milestones = [
     {
-      title: 'STAGE 1',
-      subtitle: '(Now Shipping)',
-      icon: '🧹',
-      role: 'Junior Dev',
-      capabilities: ['Backlog cleanup', 'Debt reduction', 'Safe changes'],
-      tam: '$400M TAM'
+      position: 0,
+      title: 'Junior Dev',
+      capabilities: 'Backlog cleanup, tech debt, safe changes',
+      tam: '$400M',
+      active: true
     },
     {
-      title: 'STAGE 2',
-      subtitle: '(6-12mo)',
-      icon: '🔨',
-      role: 'Mid-Level Dev',
-      capabilities: ['Ship features', 'Full stack', 'Auto QA'],
-      tam: '$2.1B TAM'
+      position: 2,
+      title: 'Mid-Level Dev',
+      capabilities: 'Feature delivery, full-stack, auto QA',
+      tam: '$2.1B',
+      active: false
     },
     {
-      title: 'STAGE 3',
-      subtitle: '(18-24mo)',
-      icon: '🏭',
-      role: 'Full Team',
-      capabilities: ['Architecture', 'Multi-service', 'Optimization'],
-      tam: '$8B TAM'
+      position: 5,
+      title: 'Full Team',
+      capabilities: 'Architecture, multi-service, optimization',
+      tam: '$8B',
+      active: false
     }
   ];
 
   return (
     <section className="max-w-7xl mx-auto border-x border-brand/10">
-      <div className="p-12 lg:p-16 border-b border-brand/10">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-2">Built to expand</h2>
-          <p className="text-lg text-muted-foreground">Start trusted, end essential</p>
-        </div>
+      {/* Full-width heading */}
+      <div className="p-8 lg:p-12 border-b border-brand/10">
+        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+          Built to <span className="text-brand bg-brand/10 px-2 py-1 rounded">expand</span>
+        </h2>
+        <p className="text-center text-lg text-muted-foreground mt-4">Start trusted, end essential</p>
+      </div>
 
-        {/* Timeline */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12 relative">
-          {/* Connection Line */}
-          <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-brand/20" style={{ zIndex: 0 }}></div>
+      <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
+        <div className="p-12 lg:p-16">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-[auto_1fr] gap-12">
+              {/* Vertical Timeline */}
+              <div className="relative pt-3">
+                <div className="absolute right-0 top-3 bottom-0 w-px bg-gradient-to-b from-brand via-brand/40 to-brand/10"></div>
 
-          {stages.map((stage, index) => (
-            <div key={index} className="relative" style={{ zIndex: 1 }}>
-              <div className="border border-brand/20 rounded-lg p-6 bg-background hover:border-brand/40 transition-all">
-                {/* Header */}
-                <div className="text-center mb-4">
-                  <div className="text-sm font-bold text-brand">{stage.title}</div>
-                  <div className="text-xs text-muted-foreground">{stage.subtitle}</div>
-                </div>
+                {timeline.map((item, index) => {
+                  const hasMilestone = milestones.some(m => m.position === index);
+                  const milestone = milestones.find(m => m.position === index);
+                  return (
+                    <div key={index} className="relative h-24 flex items-center justify-end gap-4">
+                      <div className={`text-sm font-medium ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        {item.year}
+                      </div>
+                      <div className={`text-sm font-medium pr-6 ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        {item.quarter}
+                      </div>
+                      {hasMilestone && (
+                        <div className={`absolute right-0 w-4 h-4 rounded-full -mr-2 flex items-center justify-center ${milestone?.active ? 'bg-brand ring-4 ring-brand/20' : 'bg-background border-2 border-brand/60'}`}>
+                          {milestone?.active && (
+                            <div className="w-2 h-2 rounded-full bg-white"></div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
 
-                {/* Icon */}
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 flex items-center justify-center text-4xl bg-black/5 border border-brand/20 rounded-full">
-                    {stage.icon}
-                  </div>
-                </div>
-
-                {/* Role */}
-                <div className="text-center mb-4">
-                  <div className="text-xl font-bold">{stage.role}</div>
-                </div>
-
-                {/* Capabilities */}
-                <ul className="space-y-2 mb-4">
-                  {stage.capabilities.map((capability, capIndex) => (
-                    <li key={capIndex} className="flex items-start gap-2 text-sm">
-                      <span className="text-brand mt-0.5">•</span>
-                      <span>{capability}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* TAM */}
-                <div className="text-center pt-4 border-t border-brand/10">
-                  <div className="text-lg font-bold text-brand">{stage.tam}</div>
-                </div>
+              {/* Milestone Content */}
+              <div className="space-y-0 pt-3">
+                {timeline.map((item, index) => {
+                  const milestone = milestones.find(m => m.position === index);
+                  return (
+                    <div key={index} className="h-24 flex items-center">
+                      {milestone && (
+                        <div className="p-4 space-y-2">
+                          <div className="text-2xl font-bold text-foreground">
+                            {milestone.title}
+                          </div>
+                          <div className="text-base text-muted-foreground leading-relaxed">
+                            {milestone.capabilities}
+                          </div>
+                          <div className="text-sm font-bold text-brand">
+                            TAM {milestone.tam}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Viral Growth Arrow */}
-        <div className="border border-brand/20 rounded-lg p-6 bg-black/5">
-          <div className="text-center mb-4">
-            <div className="text-sm font-bold mb-2">Viral Growth Loop</div>
-          </div>
-
-          <div className="flex items-center justify-center flex-wrap gap-2 text-sm">
-            <span className="font-medium">More usage</span>
-            <span className="text-brand">→</span>
-            <span className="font-medium">More PRs</span>
-            <span className="text-brand">→</span>
-            <span className="font-medium">More visibility</span>
-            <span className="text-brand">→</span>
-            <span className="font-medium">More teams</span>
-            <span className="text-brand">→</span>
-            <span className="font-medium">Expand features</span>
-            <span className="text-brand text-xl">↻</span>
+        {/* Growth Loop */}
+        <div className="max-w-4xl mx-auto px-12 lg:px-16 pb-12 lg:pb-16">
+          <div className="border-l-4 border-brand pl-6 space-y-4">
+            <div className="text-sm font-semibold text-brand uppercase tracking-wider">
+              Growth Loop
+            </div>
+            <div className="flex items-center flex-wrap gap-2 text-base text-muted-foreground">
+              <span>Usage</span>
+              <span className="text-brand">→</span>
+              <span>PRs</span>
+              <span className="text-brand">→</span>
+              <span>Visibility</span>
+              <span className="text-brand">→</span>
+              <span>Teams</span>
+              <span className="text-brand">→</span>
+              <span>Features</span>
+              <span className="text-brand text-xl">↻</span>
+            </div>
           </div>
         </div>
       </div>

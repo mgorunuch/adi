@@ -46,57 +46,79 @@ export default function Roadmap() {
 
       <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
         <div className="p-12 lg:p-16">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-[auto_1fr] gap-12">
-              {/* Vertical Timeline */}
-              <div className="relative pt-3">
-                <div className="absolute right-0 top-3 bottom-0 w-px bg-gradient-to-b from-brand via-brand/40 to-brand/10"></div>
-
-                {timeline.map((item, index) => {
-                  const hasMilestone = milestones.some(m => m.position === index);
-                  const milestone = milestones.find(m => m.position === index);
-                  return (
-                    <div key={index} className="relative h-24 flex items-center justify-end gap-4">
-                      <div className={`text-sm font-medium ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
-                        {item.year}
-                      </div>
-                      <div className={`text-sm font-medium pr-6 ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
-                        {item.quarter}
-                      </div>
-                      {hasMilestone && (
-                        <div className={`absolute right-0 w-4 h-4 rounded-full -mr-2 flex items-center justify-center ${milestone?.active ? 'bg-brand ring-4 ring-brand/20' : 'bg-background border-2 border-brand/60'}`}>
-                          {milestone?.active && (
-                            <div className="w-2 h-2 rounded-full bg-white"></div>
-                          )}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-[200px_1fr] gap-12">
+              {/* Left: Timeline */}
+              <div className="grid grid-cols-[1fr_auto_auto] gap-4">
+                {/* Year labels (left) */}
+                <div className="pt-3 text-right">
+                  {timeline.map((item, index) => {
+                    const hasMilestone = milestones.some(m => m.position === index);
+                    return (
+                      <div key={index} className="h-24 flex items-center justify-end">
+                        <div className={`text-sm font-medium ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
+                          {item.year}
                         </div>
-                      )}
-                    </div>
-                  );
-                })}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Vertical Timeline */}
+                <div className="relative pt-3">
+                  <div className="absolute left-1/2 -ml-px top-3 bottom-0 w-px bg-gradient-to-b from-brand via-brand/40 to-brand/10"></div>
+
+                  {timeline.map((item, index) => {
+                    const hasMilestone = milestones.some(m => m.position === index);
+                    const milestone = milestones.find(m => m.position === index);
+                    return (
+                      <div key={index} className="relative h-24 flex items-center justify-center">
+                        {hasMilestone && (
+                          <div className={`w-4 h-4 rounded-full flex items-center justify-center ${milestone?.active ? 'bg-brand ring-4 ring-brand/20' : 'bg-background border-2 border-brand/60'}`}>
+                            {milestone?.active && (
+                              <div className="w-2 h-2 rounded-full bg-white"></div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Quarter labels (right) */}
+                <div className="pt-3">
+                  {timeline.map((item, index) => {
+                    const hasMilestone = milestones.some(m => m.position === index);
+                    return (
+                      <div key={index} className="h-24 flex items-center">
+                        <div className={`text-sm font-medium ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
+                          {item.quarter}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* Milestone Content */}
-              <div className="space-y-0 pt-3">
-                {timeline.map((item, index) => {
-                  const milestone = milestones.find(m => m.position === index);
-                  return (
-                    <div key={index} className="h-24 flex items-center">
-                      {milestone && (
-                        <div className="p-4 space-y-2">
-                          <div className="text-2xl font-bold text-foreground">
-                            {milestone.title}
-                          </div>
-                          <div className="text-base text-muted-foreground leading-relaxed">
-                            {milestone.capabilities}
-                          </div>
-                          <div className="text-sm font-bold text-brand">
-                            TAM {milestone.tam}
-                          </div>
-                        </div>
-                      )}
+              {/* Right: Milestone Content */}
+              <div className="relative pt-3">
+                {milestones.map((milestone, index) => (
+                  <div
+                    key={index}
+                    className="absolute space-y-2"
+                    style={{ top: `${milestone.position * 96 + 44}px` }}
+                  >
+                    <div className="text-xl font-bold text-foreground">
+                      {milestone.title}
                     </div>
-                  );
-                })}
+                    <div className="text-sm text-muted-foreground leading-relaxed">
+                      {milestone.capabilities}
+                    </div>
+                    <div className="text-sm font-bold text-brand">
+                      TAM {milestone.tam}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

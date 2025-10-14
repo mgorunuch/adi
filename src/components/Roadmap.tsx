@@ -15,7 +15,6 @@ export default function Roadmap() {
       position: 0,
       title: 'Discovery & First Agent',
       capabilities: 'Initial prototype, single-issue automation',
-      tam: '',
       status: 'complete',
       date: 'Q3 2024'
     },
@@ -23,7 +22,6 @@ export default function Roadmap() {
       position: 1,
       title: 'Two-Way MR Integration',
       capabilities: 'Bidirectional sync, autonomous PR workflow',
-      tam: '$400M',
       status: 'current',
       date: 'Oct 2024'
     },
@@ -31,7 +29,6 @@ export default function Roadmap() {
       position: 2,
       title: 'Multi-Issue Context',
       capabilities: 'Cross-issue understanding, batch processing',
-      tam: '',
       status: 'upcoming',
       date: 'Q4 2024'
     },
@@ -39,7 +36,6 @@ export default function Roadmap() {
       position: 3,
       title: 'Team Collaboration',
       capabilities: 'Multi-agent coordination, code review automation',
-      tam: '$2.1B',
       status: 'upcoming',
       date: 'Q1 2025'
     },
@@ -47,7 +43,6 @@ export default function Roadmap() {
       position: 4,
       title: 'Enterprise Features',
       capabilities: 'SSO, audit logs, SLAs, dedicated support',
-      tam: '$8B',
       status: 'upcoming',
       date: 'Q2 2025'
     }
@@ -159,11 +154,6 @@ export default function Roadmap() {
                     <div className="text-sm text-muted-foreground leading-relaxed">
                       {milestone.capabilities}
                     </div>
-                    {milestone.tam && (
-                      <div className="text-sm font-bold text-brand">
-                        TAM {milestone.tam}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -211,14 +201,9 @@ export default function Roadmap() {
                       )}
                     </div>
                   </div>
-                  <div className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  <div className="text-sm text-muted-foreground leading-relaxed">
                     {milestone.capabilities}
                   </div>
-                  {milestone.tam && (
-                    <div className="text-sm font-bold text-brand">
-                      TAM {milestone.tam}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>

@@ -37,16 +37,17 @@ export default function Roadmap() {
   return (
     <section id="roadmap" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Built to expand heading */}
-      <div className="p-8 lg:p-12 border-b border-brand/10">
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+      <div className="p-6 sm:p-8 lg:p-12 border-b border-brand/10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center">
           Built to <span className="text-brand bg-brand/10 px-2 py-1 rounded">expand</span>
         </h2>
       </div>
 
       <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
-        <div className="p-12 lg:p-16">
+        <div className="p-6 sm:p-8 md:p-12 lg:p-16">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-[200px_1fr] gap-12">
+            {/* Desktop Layout */}
+            <div className="hidden md:grid lg:grid-cols-[200px_1fr] gap-8 sm:gap-12">
               {/* Left: Timeline */}
               <div className="grid grid-cols-[1fr_auto_auto] gap-4">
                 {/* Year labels (left) */}
@@ -120,19 +121,48 @@ export default function Roadmap() {
                 ))}
               </div>
             </div>
+
+            {/* Mobile Layout - Simplified cards */}
+            <div className="md:hidden space-y-6">
+              {milestones.map((milestone, index) => (
+                <div key={index} className="border border-brand/20 rounded-lg p-6 bg-black/[0.01]">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${milestone.active ? 'bg-brand ring-4 ring-brand/20' : 'bg-background border-2 border-brand/60'}`}>
+                      {milestone.active && (
+                        <div className="w-3 h-3 rounded-full bg-white"></div>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-xs text-muted-foreground mb-2">
+                        {timeline[milestone.position].year || '2025'} {timeline[milestone.position].quarter}
+                      </div>
+                      <div className="text-xl font-bold text-foreground mb-2">
+                        {milestone.title}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    {milestone.capabilities}
+                  </div>
+                  <div className="text-sm font-bold text-brand">
+                    TAM {milestone.tam}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Growth Loop section */}
         <div className="border-t border-brand/10">
-          <div className="p-8 lg:p-12 border-b border-brand/10">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+          <div className="p-6 sm:p-8 lg:p-12 border-b border-brand/10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center">
               Growth <span className="text-brand bg-brand/10 px-2 py-1 rounded">Loop</span>
             </h2>
           </div>
 
               {/* Enhanced grid layout with icons */}
-              <div className="grid grid-cols-6 border-b border-brand/10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 border-b border-brand/10">
                 {[
                   {
                     label: 'Usage',
@@ -191,17 +221,23 @@ export default function Roadmap() {
                 ].map((node, index, arr) => (
                   <div
                     key={node.label}
-                    className={`p-8 lg:p-12 hover:bg-brand/10 transition-colors ${index < arr.length - 1 ? 'border-r border-brand/10' : ''}`}
+                    className={`p-6 sm:p-8 lg:p-12 hover:bg-brand/10 transition-colors
+                      ${index < 4 ? 'border-b border-brand/10' : ''}
+                      ${index % 2 === 0 ? 'border-r border-brand/10' : ''}
+                      sm:${index < 3 ? 'border-b' : 'border-b-0'} sm:border-brand/10
+                      sm:${index % 3 !== 2 ? 'border-r' : 'border-r-0'}
+                      lg:border-b-0 lg:${index < arr.length - 1 ? 'border-r' : 'border-r-0'}
+                    `}
                   >
-                    <div className="flex flex-col items-center text-center space-y-4">
+                    <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
                       <div className="text-brand/70">
-                        <div className="w-12 h-12 lg:w-16 lg:h-16">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16">
                           {node.icon}
                         </div>
                       </div>
                       <div>
-                        <div className="text-lg lg:text-xl font-bold text-foreground mb-2">{node.label}</div>
-                        <div className="text-sm lg:text-base text-muted-foreground leading-tight">{node.subtitle}</div>
+                        <div className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-1 sm:mb-2">{node.label}</div>
+                        <div className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-tight">{node.subtitle}</div>
                       </div>
                     </div>
                   </div>

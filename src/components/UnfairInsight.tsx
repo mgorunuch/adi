@@ -17,22 +17,22 @@ export default function UnfairInsight() {
   return (
     <section id="unfair-insight" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Full-width heading */}
-      <div className="p-8 lg:p-12 border-b border-brand/10">
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+      <div className="p-6 sm:p-8 lg:p-12 border-b border-brand/10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center">
           60% of your backlog is{' '}
           <span className="text-brand bg-brand/10 px-2 py-1 rounded">AI-solvable</span> today
         </h2>
       </div>
 
-      <div className="grid lg:grid-cols-[58%_42%] border-b border-brand/10 min-h-[600px]">
+      <div className="grid lg:grid-cols-[58%_42%] border-b border-brand/10">
         {/* Left: Chart */}
-        <div className="p-8 lg:p-12 bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center border-r border-brand/10">
-          <div className="w-full h-[450px]">
-            <div className="text-center mb-4">
-              <h3 className="text-lg font-semibold text-foreground">Issues Resolved (Cumulative)</h3>
-              <p className="text-sm text-muted-foreground">Over 18 months</p>
+        <div className="p-6 sm:p-8 lg:p-12 bg-gradient-to-br from-black/5 to-black/10 flex items-center justify-center lg:border-r border-brand/10">
+          <div className="w-full h-[400px] sm:h-[500px]">
+            <div className="text-center mb-3 sm:mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-foreground">Issues Resolved (Cumulative)</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground">Over 18 months</p>
             </div>
-            <ResponsiveContainer width="100%" height="90%">
+            <ResponsiveContainer width="100%" height="85%">
               <LineChart
                 data={data}
                 margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
@@ -96,17 +96,17 @@ export default function UnfairInsight() {
                 />
               </LineChart>
             </ResponsiveContainer>
-            <div className="text-center mt-2">
-              <div className="inline-flex items-center gap-2 px-4 py-2 border-l-4 border-brand">
-                <div className="w-3 h-3 bg-brand animate-pulse" />
-                <span className="text-sm font-semibold text-brand">12× more issues resolved with AI</span>
+            <div className="text-center mt-3 sm:mt-4">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 border-l-4 border-brand">
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-brand animate-pulse" />
+                <span className="text-xs sm:text-sm font-semibold text-brand">12× more issues resolved with AI</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right: Text Content */}
-        <div className="p-8 lg:p-12 xl:p-16 flex flex-col justify-center space-y-8">
+        <div className="p-6 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center space-y-6 sm:space-y-8 border-t lg:border-t-0 border-brand/10">
           {/* Research data */}
           <div className="space-y-4">
             <div className="inline-block border-l-4 border-brand pl-3 text-xs font-semibold text-brand uppercase tracking-wide">

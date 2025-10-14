@@ -2,8 +2,8 @@ export default function Pricing() {
   return (
     <section id="pricing" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Pricing heading */}
-      <div className="p-8 lg:p-12 border-b border-brand/10">
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+      <div className="p-6 sm:p-8 lg:p-12 border-b border-brand/10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center">
           Pricing <span className="text-brand bg-brand/10 px-2 py-1 rounded">Model</span>
         </h2>
       </div>
@@ -12,7 +12,7 @@ export default function Pricing() {
         {/* Two Tier Model */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
           {/* Open Source - BYOK */}
-          <div className="p-8 lg:p-12 bg-black/[0.01] hover:bg-black/[0.02] transition-all border-r border-brand/20">
+          <div className="p-6 sm:p-8 lg:p-12 bg-black/[0.01] hover:bg-black/[0.02] transition-all md:border-r border-b md:border-b-0 border-brand/20">
             <div className="text-center mb-6">
               <div className="inline-block mb-4">
                 <span className="text-sm font-bold text-brand uppercase tracking-wider bg-brand/10 px-3 py-1 rounded">
@@ -62,7 +62,7 @@ export default function Pricing() {
           </div>
 
           {/* Managed Cloud */}
-          <div className="p-8 lg:p-12 bg-brand/[0.03] hover:bg-brand/[0.05] transition-all">
+          <div className="p-6 sm:p-8 lg:p-12 bg-brand/[0.03] hover:bg-brand/[0.05] transition-all">
             <div className="text-center mb-6">
               <div className="inline-block mb-4">
                 <span className="text-sm font-bold text-brand uppercase tracking-wider bg-brand/20 px-3 py-1 rounded">
@@ -129,13 +129,13 @@ export default function Pricing() {
         </div>
 
         {/* Business Metrics */}
-        <div className="border-t border-brand/10 p-8 lg:p-12 bg-gradient-to-br from-brand/[0.03] to-transparent">
-              <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
+        <div className="border-t border-brand/10 p-6 sm:p-8 lg:p-12 bg-gradient-to-br from-brand/[0.03] to-transparent">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center">
                 Business Model
               </h3>
 
               {/* Dual Revenue Streams */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8 max-w-4xl mx-auto">
                 <div className="border border-brand/10 rounded-lg p-6 bg-black/[0.02]">
                   <div className="text-sm font-bold text-brand uppercase tracking-wider mb-4">
                     Open Source Strategy
@@ -187,35 +187,35 @@ export default function Pricing() {
               </div>
 
               {/* Key Metrics */}
-              <div className="border-t border-brand/10 pt-8">
-                <h4 className="text-sm font-bold text-foreground uppercase tracking-wider mb-6 text-center">
+              <div className="border-t border-brand/10 pt-6 sm:pt-8">
+                <h4 className="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider mb-4 sm:mb-6 text-center">
                   Unit Economics (Managed Cloud)
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center max-w-3xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center max-w-3xl mx-auto">
                   <div>
-                    <div className="text-3xl font-bold text-brand mb-2">~$32</div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">Net margin/user/mo</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-brand mb-1 sm:mb-2">~$32</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">Net margin/user/mo</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-brand mb-2">&lt;$100</div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">CAC target</div>
-                    <div className="text-xs text-muted-foreground mt-1">(OSS → Cloud funnel)</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-brand mb-1 sm:mb-2">&lt;$100</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">CAC target</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground mt-1">(OSS → Cloud funnel)</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-brand mb-2">$375-1.5K</div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">LTV (6-24mo)</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-brand mb-1 sm:mb-2">$375-1.5K</div>
+                    <div className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">LTV (6-24mo)</div>
                   </div>
                 </div>
               </div>
 
               {/* Path to Scale */}
-              <div className="mt-8 text-center">
-                <div className="inline-block border border-brand/10 rounded-lg px-6 py-4 bg-black/[0.01]">
-                  <div className="text-xs text-muted-foreground mb-2 uppercase tracking-wider font-semibold">
+              <div className="mt-6 sm:mt-8 text-center">
+                <div className="inline-block border border-brand/10 rounded-lg px-4 py-3 sm:px-6 sm:py-4 bg-black/[0.01]">
+                  <div className="text-[10px] sm:text-xs text-muted-foreground mb-1 sm:mb-2 uppercase tracking-wider font-semibold">
                     Path to $1M ARR
                   </div>
-                  <div className="text-2xl font-bold text-brand">~1,350 paying users</div>
-                  <div className="text-xs text-muted-foreground mt-1">
+                  <div className="text-xl sm:text-2xl font-bold text-brand">~1,350 paying users</div>
+                  <div className="text-[10px] sm:text-xs text-muted-foreground mt-1">
                     at $62.50 ARPU (2.5M tokens/month avg)
                   </div>
                 </div>

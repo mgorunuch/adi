@@ -61,8 +61,8 @@ export default function WhyMe() {
   return (
     <section id="team" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Why Me heading */}
-      <div className="p-8 lg:p-12 border-b border-brand/10">
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+      <div className="p-6 sm:p-8 lg:p-12 border-b border-brand/10">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center">
           Why <span className="text-brand bg-brand/10 px-2 py-1 rounded">Me</span>
         </h2>
       </div>
@@ -70,24 +70,24 @@ export default function WhyMe() {
       <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
           <div className="grid lg:grid-cols-[2fr_1fr] gap-0">
             {/* Left: Grid of reasons */}
-            <div className="grid md:grid-cols-2 gap-0 lg:border-r border-brand/20">
+            <div className="grid sm:grid-cols-2 gap-0 lg:border-r border-brand/20">
               {reasons.map((reason, index) => (
                 <div
                   key={index}
-                  className={`p-8 hover:bg-brand/5 transition-colors ${
-                    index % 2 !== 1 ? 'border-r border-brand/20' : ''
-                  } ${index < 4 ? 'border-b border-brand/20' : ''}`}
+                  className={`p-6 sm:p-8 hover:bg-brand/5 transition-colors ${
+                    index % 2 !== 1 ? 'sm:border-r border-brand/20' : ''
+                  } ${index < reasons.length - 1 ? 'border-b border-brand/20' : ''} ${index === reasons.length - 2 ? 'sm:border-b-0' : ''}`}
                 >
                   <div className="flex flex-col h-full">
-                    <div className="text-brand/70 mb-4">
-                      <div className="w-10 h-10">
+                    <div className="text-brand/70 mb-3 sm:mb-4">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10">
                         {reason.icon}
                       </div>
                     </div>
-                    <div className="text-lg font-bold text-foreground mb-3">
+                    <div className="text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
                       {reason.title}
                     </div>
-                    <div className="text-sm text-muted-foreground leading-relaxed">
+                    <div className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                       {reason.description}
                     </div>
                   </div>
@@ -96,9 +96,9 @@ export default function WhyMe() {
             </div>
 
             {/* Right: Image */}
-            <div className="bg-black/[0.02] hover:bg-black/[0.03] transition-colors flex items-center justify-center">
+            <div className="bg-black/[0.02] hover:bg-black/[0.03] transition-colors flex items-center justify-center min-h-[300px] lg:min-h-0 border-t lg:border-t-0 border-brand/20">
               <img
-                src="/me.jpeg"
+                src="/me.png"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
@@ -107,37 +107,37 @@ export default function WhyMe() {
 
         {/* Call to Action */}
         <div className="border-t border-brand/10">
-          <div className="p-8 lg:p-12 border-b border-brand/10">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+          <div className="p-6 sm:p-8 lg:p-12 border-b border-brand/10">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-center">
               Ready to build this <span className="text-brand bg-brand/10 px-2 py-1 rounded">together</span>?
             </h2>
           </div>
-          <div className="grid grid-cols-3 gap-0">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
             <a
               href="https://t.me/mgorunuch"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-[#0088cc] hover:bg-[#0088cc]/90 text-white font-bold py-6 transition-colors text-lg border-r border-brand/10"
+              className="flex items-center justify-center gap-2 sm:gap-3 bg-[#0088cc] hover:bg-[#0088cc]/90 text-white font-bold py-5 sm:py-6 transition-colors text-base sm:text-lg border-b sm:border-b-0 sm:border-r border-brand/10"
             >
-              <FaTelegram className="w-6 h-6" />
+              <FaTelegram className="w-5 h-5 sm:w-6 sm:h-6" />
               Telegram
             </a>
             <a
               href="https://wa.me/380987665465"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#25D366]/90 text-white font-bold py-6 transition-colors text-lg border-r border-brand/10"
+              className="flex items-center justify-center gap-2 sm:gap-3 bg-[#25D366] hover:bg-[#25D366]/90 text-white font-bold py-5 sm:py-6 transition-colors text-base sm:text-lg border-b sm:border-b-0 sm:border-r border-brand/10"
             >
-              <FaWhatsapp className="w-6 h-6" />
+              <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
               WhatsApp
             </a>
             <a
               href="https://linkedin.com/in/mgorunuch"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-[#0077b5] hover:bg-[#0077b5]/90 text-white font-bold py-6 transition-colors text-lg"
+              className="flex items-center justify-center gap-2 sm:gap-3 bg-[#0077b5] hover:bg-[#0077b5]/90 text-white font-bold py-5 sm:py-6 transition-colors text-base sm:text-lg"
             >
-              <FaLinkedin className="w-6 h-6" />
+              <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               LinkedIn
             </a>
           </div>

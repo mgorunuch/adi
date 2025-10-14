@@ -92,7 +92,7 @@ export default function CompetitiveLandscape() {
                     {quadrants[1].items.map((item, idx) => (
                       <div key={idx} className="group">
                         <div className="inline-block">
-                          {item.highlight ? (
+                          {'highlight' in item && item.highlight ? (
                             <div className="bg-brand text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-bold text-base sm:text-lg shadow-lg mb-1 sm:mb-2">
                               {item.name}
                             </div>

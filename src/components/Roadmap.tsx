@@ -1,36 +1,55 @@
 export default function Roadmap() {
   const timeline = [
-    { year: '2025', quarter: 'Q3' },
-    { year: '', quarter: 'Q4' },
-    { year: '2026', quarter: 'Q1' },
-    { year: '', quarter: 'Q2' },
-    { year: '', quarter: 'Q3' },
-    { year: '', quarter: 'Q4' },
-    { year: '2027', quarter: 'Q1' },
-    { year: '', quarter: 'Q2' }
+    { year: '2024', quarter: 'Q3', label: 'Q3 2024' },
+    { year: '', quarter: 'Oct', label: 'Oct 2024' },
+    { year: '', quarter: 'Q4', label: 'Q4 2024' },
+    { year: '2025', quarter: 'Q1', label: 'Q1 2025' },
+    { year: '', quarter: 'Q2', label: 'Q2 2025' },
+    { year: '', quarter: 'Q3', label: 'Q3 2025' },
+    { year: '', quarter: 'Q4', label: 'Q4 2025' },
+    { year: '2026', quarter: 'Q1', label: 'Q1 2026' }
   ];
 
   const milestones = [
     {
       position: 0,
-      title: 'Junior Dev',
-      capabilities: 'Backlog cleanup, tech debt, safe changes',
+      title: 'Discovery & First Agent',
+      capabilities: 'Initial prototype, single-issue automation',
+      tam: '',
+      status: 'complete',
+      date: 'Q3 2024'
+    },
+    {
+      position: 1,
+      title: 'Two-Way MR Integration',
+      capabilities: 'Bidirectional sync, autonomous PR workflow',
       tam: '$400M',
-      active: true
+      status: 'current',
+      date: 'Oct 2024'
     },
     {
       position: 2,
-      title: 'Mid-Level Dev',
-      capabilities: 'Feature delivery, full-stack, auto QA',
-      tam: '$2.1B',
-      active: false
+      title: 'Multi-Issue Context',
+      capabilities: 'Cross-issue understanding, batch processing',
+      tam: '',
+      status: 'upcoming',
+      date: 'Q4 2024'
     },
     {
-      position: 5,
-      title: 'Full Team',
-      capabilities: 'Architecture, multi-service, optimization',
+      position: 3,
+      title: 'Team Collaboration',
+      capabilities: 'Multi-agent coordination, code review automation',
+      tam: '$2.1B',
+      status: 'upcoming',
+      date: 'Q1 2025'
+    },
+    {
+      position: 4,
+      title: 'Enterprise Features',
+      capabilities: 'SSO, audit logs, SLAs, dedicated support',
       tam: '$8B',
-      active: false
+      status: 'upcoming',
+      date: 'Q2 2025'
     }
   ];
 
@@ -74,10 +93,21 @@ export default function Roadmap() {
                     return (
                       <div key={index} className="relative h-24 flex items-center justify-center">
                         {hasMilestone && (
-                          <div className={`w-4 h-4 rounded-full flex items-center justify-center ${milestone?.active ? 'bg-brand ring-4 ring-brand/20' : 'bg-background border-2 border-brand/60'}`}>
-                            {milestone?.active && (
-                              <div className="w-2 h-2 rounded-full bg-white"></div>
-                            )}
+                          <div className="relative">
+                            <div className={`w-4 h-4 rounded-full flex items-center justify-center ${
+                              milestone?.status === 'complete' ? 'bg-green-500' :
+                              milestone?.status === 'current' ? 'bg-brand ring-4 ring-brand/20 animate-pulse' :
+                              'bg-background border-2 border-brand/60'
+                            }`}>
+                              {milestone?.status === 'complete' && (
+                                <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                              {milestone?.status === 'current' && (
+                                <div className="w-2 h-2 rounded-full bg-white"></div>
+                              )}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -108,15 +138,32 @@ export default function Roadmap() {
                     className="absolute space-y-2"
                     style={{ top: `${milestone.position * 96 + 44}px` }}
                   >
-                    <div className="text-xl font-bold text-foreground">
-                      {milestone.title}
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="text-xl font-bold text-foreground">
+                        {milestone.title}
+                      </div>
+                      {milestone.status === 'current' && (
+                        <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded animate-pulse">
+                          ← You are here
+                        </div>
+                      )}
+                      {milestone.status === 'complete' && (
+                        <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded">
+                          ✓ Complete
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-xs text-muted-foreground font-semibold">
+                      {milestone.date}
                     </div>
                     <div className="text-sm text-muted-foreground leading-relaxed">
                       {milestone.capabilities}
                     </div>
-                    <div className="text-sm font-bold text-brand">
-                      TAM {milestone.tam}
-                    </div>
+                    {milestone.tam && (
+                      <div className="text-sm font-bold text-brand">
+                        TAM {milestone.tam}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -125,28 +172,53 @@ export default function Roadmap() {
             {/* Mobile Layout - Simplified cards */}
             <div className="md:hidden space-y-6">
               {milestones.map((milestone, index) => (
-                <div key={index} className="border border-brand/20 rounded-lg p-6 bg-black/[0.01]">
+                <div key={index} className={`border rounded-lg p-6 ${
+                  milestone.status === 'current' ? 'border-brand bg-brand/5' :
+                  milestone.status === 'complete' ? 'border-green-500/50 bg-green-500/5' :
+                  'border-brand/20 bg-black/[0.01]'
+                }`}>
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${milestone.active ? 'bg-brand ring-4 ring-brand/20' : 'bg-background border-2 border-brand/60'}`}>
-                      {milestone.active && (
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+                      milestone.status === 'complete' ? 'bg-green-500' :
+                      milestone.status === 'current' ? 'bg-brand ring-4 ring-brand/20 animate-pulse' :
+                      'bg-background border-2 border-brand/60'
+                    }`}>
+                      {milestone.status === 'complete' && (
+                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      )}
+                      {milestone.status === 'current' && (
                         <div className="w-3 h-3 rounded-full bg-white"></div>
                       )}
                     </div>
                     <div className="flex-1">
-                      <div className="text-xs text-muted-foreground mb-2">
-                        {timeline[milestone.position].year || '2025'} {timeline[milestone.position].quarter}
+                      <div className="text-xs text-muted-foreground mb-2 font-semibold">
+                        {milestone.date}
                       </div>
                       <div className="text-xl font-bold text-foreground mb-2">
                         {milestone.title}
                       </div>
+                      {milestone.status === 'current' && (
+                        <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded mb-2">
+                          ← You are here
+                        </div>
+                      )}
+                      {milestone.status === 'complete' && (
+                        <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded mb-2">
+                          ✓ Complete
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="text-sm text-muted-foreground leading-relaxed mb-3">
                     {milestone.capabilities}
                   </div>
-                  <div className="text-sm font-bold text-brand">
-                    TAM {milestone.tam}
-                  </div>
+                  {milestone.tam && (
+                    <div className="text-sm font-bold text-brand">
+                      TAM {milestone.tam}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

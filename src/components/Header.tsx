@@ -6,7 +6,9 @@ import { Menu, X } from 'lucide-react';
 const navItems = [
   { label: 'Insight', href: '#unfair-insight' },
   { label: 'Technical', href: '#technical-breakthrough' },
+  { label: 'Customers', href: '#target-customers' },
   { label: 'Roadmap', href: '#roadmap' },
+  { label: 'Launch', href: '#go-to-market' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'Team', href: '#team' },
 ];

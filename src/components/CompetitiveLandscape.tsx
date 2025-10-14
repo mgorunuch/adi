@@ -4,15 +4,17 @@ export default function CompetitiveLandscape() {
       title: 'Single Task + Autonomous',
       position: 'top-left',
       items: [
-        { name: 'Kudo', description: 'Testing automation' },
-        { name: 'SonarQube', description: 'Code quality analysis' }
+        { name: 'Sweep', description: 'Automated PR creation from issues' },
+        { name: 'Dependabot', description: 'Automated dependency updates' },
+        { name: 'GitHub Actions', description: 'CI/CD automation workflows' }
       ]
     },
     {
       title: 'Full Platform + Autonomous',
       position: 'top-right',
       items: [
-        { name: 'YOU', highlight: true, description: 'End-to-end development agent' }
+        { name: 'ADI', highlight: true, description: 'End-to-end development agent' },
+        { name: 'Devin', description: 'AI software engineer, limited to sandbox environments' }
       ],
       isEmpty: false,
       highlight: true
@@ -20,14 +22,19 @@ export default function CompetitiveLandscape() {
     {
       title: 'Single Task + Assisted',
       position: 'bottom-left',
-      items: []
+      items: [
+        { name: 'ESLint', description: 'Code linting with auto-fix' },
+        { name: 'Prettier', description: 'Code formatting on save' },
+        { name: 'IDE Quick Fixes', description: 'Suggested refactorings' }
+      ]
     },
     {
       title: 'Full Platform + Assisted',
       position: 'bottom-right',
       items: [
-        { name: 'GitHub Copilot', description: 'AI pair programmer' },
-        { name: 'Cursor', description: 'AI code editor' }
+        { name: 'GitHub Copilot', description: 'AI code completion, requires constant input' },
+        { name: 'Cursor', description: 'AI-enhanced editor, manual task management' },
+        { name: 'Cody', description: 'AI assistant with codebase context' }
       ]
     }
   ];
@@ -85,33 +92,34 @@ export default function CompetitiveLandscape() {
                     {quadrants[1].items.map((item, idx) => (
                       <div key={idx} className="group">
                         <div className="inline-block">
-                          <div className="bg-brand text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg mb-2">
-                            {item.name}
-                          </div>
+                          {item.highlight ? (
+                            <div className="bg-brand text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg mb-2">
+                              {item.name}
+                            </div>
+                          ) : (
+                            <div className="text-sm font-semibold text-foreground mb-1">{item.name}</div>
+                          )}
                           <div className="text-sm text-foreground font-medium">{item.description}</div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 pt-6 border-t border-brand/20">
-                    <div className="text-xs font-semibold text-brand">
-                      ✓ The only solution in this quadrant
-                    </div>
-                  </div>
                 </div>
               </div>
 
-              {/* Bottom Left Quadrant - EMPTY */}
+              {/* Bottom Left Quadrant */}
               <div className="border-r border-brand/20 p-8 bg-black/[0.01] hover:bg-black/[0.02] transition-colors">
                 <div className="h-full flex flex-col">
                   <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-6">
                     Assisted • Single Task
                   </div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-4xl text-muted-foreground/20 mb-2">—</div>
-                      <div className="text-xs text-muted-foreground italic">No major players</div>
-                    </div>
+                  <div className="space-y-3">
+                    {quadrants[2].items.map((item, idx) => (
+                      <div key={idx} className="group">
+                        <div className="text-sm font-semibold text-foreground mb-1">{item.name}</div>
+                        <div className="text-xs text-muted-foreground">{item.description}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

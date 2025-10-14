@@ -59,7 +59,7 @@ export default function WhyMe() {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto border-x border-brand/10">
+    <section id="team" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Why Me heading */}
       <div className="p-8 lg:p-12 border-b border-brand/10">
         <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
@@ -114,7 +114,7 @@ export default function WhyMe() {
           </div>
           <div className="grid grid-cols-3 gap-0">
             <a
-              href="https://t.me/yourusername"
+              href="https://t.me/mgorunuch"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-[#0088cc] hover:bg-[#0088cc]/90 text-white font-bold py-6 transition-colors text-lg border-r border-brand/10"
@@ -123,7 +123,7 @@ export default function WhyMe() {
               Telegram
             </a>
             <a
-              href="https://wa.me/yourphonenumber"
+              href="https://wa.me/380987665465"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#25D366]/90 text-white font-bold py-6 transition-colors text-lg border-r border-brand/10"
@@ -132,7 +132,7 @@ export default function WhyMe() {
               WhatsApp
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/mgorunuch"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-[#0077b5] hover:bg-[#0077b5]/90 text-white font-bold py-6 transition-colors text-lg"

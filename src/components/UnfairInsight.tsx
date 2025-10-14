@@ -15,7 +15,7 @@ const data = [
 export default function UnfairInsight() {
 
   return (
-    <section className="max-w-7xl mx-auto border-x border-brand/10">
+    <section id="unfair-insight" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Full-width heading */}
       <div className="p-8 lg:p-12 border-b border-brand/10">
         <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">

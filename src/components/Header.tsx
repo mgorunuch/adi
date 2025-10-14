@@ -1,7 +1,9 @@
 const navItems = [
-  { label: 'Home', href: '#' },
-  { label: 'About', href: '#' },
-  { label: 'Contact', href: '#' },
+  { label: 'Insight', href: '#unfair-insight' },
+  { label: 'Technical', href: '#technical-breakthrough' },
+  { label: 'Roadmap', href: '#roadmap' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Team', href: '#team' },
 ];
 
 export default function Header() {

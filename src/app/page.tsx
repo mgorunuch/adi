@@ -4,6 +4,7 @@ import UnfairInsight from "@/components/UnfairInsight";
 import TechnicalBreakthrough from "@/components/TechnicalBreakthrough";
 import Roadmap from "@/components/Roadmap";
 import CompetitiveLandscape from "@/components/CompetitiveLandscape";
+import Pricing from "@/components/Pricing";
 import WhyMe from "@/components/WhyMe";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <TechnicalBreakthrough />
         <Roadmap />
         <CompetitiveLandscape />
+        <Pricing />
         <WhyMe />
       </main>
     </div>

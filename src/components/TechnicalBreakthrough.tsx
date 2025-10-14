@@ -5,7 +5,7 @@ import { SiJira, SiGithub, SiGitlab, SiOpenai, SiAnthropic, SiGooglegemini, SiJe
 
 export default function TechnicalBreakthrough() {
   return (
-    <section className="max-w-7xl mx-auto border-x border-brand/10">
+    <section id="technical-breakthrough" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Full-width heading */}
       <div className="p-8 lg:p-12 border-b border-brand/10">
         <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">

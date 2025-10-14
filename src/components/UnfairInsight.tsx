@@ -20,7 +20,7 @@ export default function UnfairInsight() {
       <div className="p-8 lg:p-12 border-b border-brand/10">
         <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
           60% of your backlog is{' '}
-          <span className="text-brand border-l-4 border-brand pl-3">AI-solvable</span> today
+          <span className="text-brand bg-brand/10 px-2 py-1 rounded">AI-solvable</span> today
         </h2>
       </div>
 

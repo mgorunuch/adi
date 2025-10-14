@@ -1,95 +1,144 @@
 export default function CompetitiveLandscape() {
-  const competitors = [
-    { name: 'YOU', x: 30, y: 80, highlight: true, description: 'Only autonomous, full-platform agent' },
-    { name: 'Kudo', x: 20, y: 30, highlight: false, description: 'Testing only' },
-    { name: 'SonarQube', x: 15, y: 25, highlight: false, description: 'Code quality' },
-    { name: 'Copilot', x: 75, y: 25, highlight: false, description: 'Human-assisted' },
-    { name: 'Cursor', x: 70, y: 20, highlight: false, description: 'Human-assisted' }
+  const quadrants = [
+    {
+      title: 'Single Task + Autonomous',
+      position: 'top-left',
+      items: [
+        { name: 'Kudo', description: 'Testing automation' },
+        { name: 'SonarQube', description: 'Code quality analysis' }
+      ]
+    },
+    {
+      title: 'Full Platform + Autonomous',
+      position: 'top-right',
+      items: [
+        { name: 'YOU', highlight: true, description: 'End-to-end development agent' }
+      ],
+      isEmpty: false,
+      highlight: true
+    },
+    {
+      title: 'Single Task + Assisted',
+      position: 'bottom-left',
+      items: []
+    },
+    {
+      title: 'Full Platform + Assisted',
+      position: 'bottom-right',
+      items: [
+        { name: 'GitHub Copilot', description: 'AI pair programmer' },
+        { name: 'Cursor', description: 'AI code editor' }
+      ]
+    }
   ];
 
   return (
     <section className="max-w-7xl mx-auto border-x border-brand/10">
-      <div className="p-12 lg:p-16 border-b border-brand/10">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold">Competitive Landscape</h2>
-        </div>
+      {/* Competitive Landscape heading */}
+      <div className="p-8 lg:p-12 border-b border-brand/10">
+        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+          Competitive <span className="text-brand bg-brand/10 px-2 py-1 rounded">Landscape</span>
+        </h2>
+      </div>
 
-        {/* 2x2 Matrix */}
-        <div className="border border-brand/20 rounded-lg bg-black/5 p-8 relative" style={{ height: '600px' }}>
-          {/* Vertical Axis */}
-          <div className="absolute left-8 top-8 bottom-8 flex flex-col justify-between items-center">
-            <div className="text-sm font-bold text-muted-foreground transform -rotate-90 whitespace-nowrap" style={{ transformOrigin: 'center' }}>
-              AUTONOMOUS ↑
-            </div>
-            <div className="text-sm font-bold text-muted-foreground transform -rotate-90 whitespace-nowrap" style={{ transformOrigin: 'center' }}>
-              ASSISTED ↓
-            </div>
-          </div>
-
-          {/* Horizontal Axis */}
-          <div className="absolute left-8 right-8 bottom-8 flex justify-between items-center">
-            <div className="text-sm font-bold text-muted-foreground whitespace-nowrap">
-              SINGLE TASK ←
-            </div>
-            <div className="text-sm font-bold text-muted-foreground whitespace-nowrap">
-              → FULL PLATFORM
-            </div>
-          </div>
-
-          {/* Grid */}
-          <div className="absolute left-24 right-24 top-16 bottom-24 border-l-2 border-b-2 border-brand/20">
-            {/* Horizontal Center Line */}
-            <div className="absolute left-0 right-0 top-1/2 border-t border-brand/10"></div>
-            {/* Vertical Center Line */}
-            <div className="absolute top-0 bottom-0 left-1/2 border-l border-brand/10"></div>
-
-            {/* Plot competitors */}
-            {competitors.map((competitor, index) => (
-              <div
-                key={index}
-                className="absolute"
-                style={{
-                  left: `${competitor.x}%`,
-                  bottom: `${competitor.y}%`,
-                  transform: 'translate(-50%, 50%)'
-                }}
-              >
-                {competitor.highlight ? (
-                  <div className="relative">
-                    {/* Highlight circle */}
-                    <div className="absolute -inset-6 bg-brand/10 rounded-full animate-pulse"></div>
-                    <div className="relative bg-brand text-white px-6 py-3 rounded-lg font-bold text-lg shadow-lg">
-                      {competitor.name}
-                    </div>
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background border border-brand/20 rounded px-3 py-1 text-sm whitespace-nowrap font-medium">
-                      {competitor.description}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="relative group">
-                    <div className="bg-black/10 border border-brand/20 px-4 py-2 rounded font-medium hover:bg-black/20 hover:border-brand/40 transition-all cursor-pointer">
-                      {competitor.name} ●
-                    </div>
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-background border border-brand/20 rounded px-3 py-1 text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-                      {competitor.description}
-                    </div>
-                  </div>
-                )}
+      <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
+        <div className="p-8 lg:p-12">
+          <div className="max-w-5xl mx-auto">
+            {/* Axis Labels */}
+            <div className="flex justify-center mb-6">
+              <div className="text-xs font-bold text-brand uppercase tracking-wider">
+                ← Single Task <span className="mx-8 text-muted-foreground">to</span> Full Platform →
               </div>
-            ))}
-          </div>
+            </div>
 
-          {/* Empty quadrant label */}
-          <div className="absolute right-32 top-24 text-sm text-muted-foreground italic">
-            Empty quadrant
-          </div>
-        </div>
+            {/* 2x2 Grid */}
+            <div className="grid grid-cols-2 gap-0 border border-brand/20">
+              {/* Top Left Quadrant */}
+              <div className="border-r border-b border-brand/20 p-8 bg-black/[0.01] hover:bg-black/[0.03] transition-colors">
+                <div className="h-full flex flex-col">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-6">
+                    Autonomous • Single Task
+                  </div>
+                  <div className="space-y-3">
+                    {quadrants[0].items.map((item, idx) => (
+                      <div key={idx} className="group">
+                        <div className="text-sm font-semibold text-foreground mb-1">{item.name}</div>
+                        <div className="text-xs text-muted-foreground">{item.description}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
-        {/* Callout */}
-        <div className="mt-8 text-center">
-          <div className="inline-block border border-brand/20 rounded-lg px-6 py-3 bg-brand/5">
-            <div className="text-sm font-medium">
-              <span className="text-brand font-bold">Only autonomous, full-platform agent</span> in the market
+              {/* Top Right Quadrant - HIGHLIGHT */}
+              <div className="border-b border-brand/20 p-8 bg-brand/[0.03] hover:bg-brand/[0.05] transition-colors relative overflow-hidden">
+                <div className="absolute top-4 right-4">
+                  <svg className="w-6 h-6 text-brand/20" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
+                <div className="h-full flex flex-col">
+                  <div className="text-xs font-bold text-brand uppercase tracking-wider mb-6">
+                    Autonomous • Full Platform
+                  </div>
+                  <div className="space-y-4">
+                    {quadrants[1].items.map((item, idx) => (
+                      <div key={idx} className="group">
+                        <div className="inline-block">
+                          <div className="bg-brand text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg mb-2">
+                            {item.name}
+                          </div>
+                          <div className="text-sm text-foreground font-medium">{item.description}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-6 border-t border-brand/20">
+                    <div className="text-xs font-semibold text-brand">
+                      ✓ The only solution in this quadrant
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Left Quadrant - EMPTY */}
+              <div className="border-r border-brand/20 p-8 bg-black/[0.01] hover:bg-black/[0.02] transition-colors">
+                <div className="h-full flex flex-col">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-6">
+                    Assisted • Single Task
+                  </div>
+                  <div className="flex-1 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-4xl text-muted-foreground/20 mb-2">—</div>
+                      <div className="text-xs text-muted-foreground italic">No major players</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Right Quadrant */}
+              <div className="p-8 bg-black/[0.01] hover:bg-black/[0.03] transition-colors">
+                <div className="h-full flex flex-col">
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-6">
+                    Assisted • Full Platform
+                  </div>
+                  <div className="space-y-3">
+                    {quadrants[3].items.map((item, idx) => (
+                      <div key={idx} className="group">
+                        <div className="text-sm font-semibold text-foreground mb-1">{item.name}</div>
+                        <div className="text-xs text-muted-foreground">{item.description}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Vertical Axis Label */}
+            <div className="flex justify-center mt-6">
+              <div className="text-xs font-bold text-brand uppercase tracking-wider">
+                ↑ Autonomous <span className="mx-8 text-muted-foreground">to</span> Assisted ↓
+              </div>
             </div>
           </div>
         </div>

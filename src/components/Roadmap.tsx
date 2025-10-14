@@ -36,12 +36,11 @@ export default function Roadmap() {
 
   return (
     <section className="max-w-7xl mx-auto border-x border-brand/10">
-      {/* Full-width heading */}
+      {/* Built to expand heading */}
       <div className="p-8 lg:p-12 border-b border-brand/10">
         <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
           Built to <span className="text-brand bg-brand/10 px-2 py-1 rounded">expand</span>
         </h2>
-        <p className="text-center text-lg text-muted-foreground mt-4">Start trusted, end essential</p>
       </div>
 
       <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
@@ -124,108 +123,90 @@ export default function Roadmap() {
           </div>
         </div>
 
-        {/* Growth Loop */}
-        <div className="max-w-5xl mx-auto px-12 lg:px-16 pb-12 lg:pb-16">
-          <div className="space-y-8">
-            <div className="text-sm font-semibold text-brand uppercase tracking-wider text-center">
-              Growth Loop
-            </div>
+        {/* Growth Loop section */}
+        <div className="border-t border-brand/10">
+          <div className="p-8 lg:p-12 border-b border-brand/10">
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-center">
+              Growth <span className="text-brand bg-brand/10 px-2 py-1 rounded">Loop</span>
+            </h2>
+          </div>
 
-            {/* Circular Flow Chart with SVG */}
-            <div className="relative w-full max-w-lg mx-auto" style={{ height: '400px' }}>
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-                {/* Circular path with arrows */}
-                <defs>
-                  <marker
-                    id="arrowhead"
-                    markerWidth="10"
-                    markerHeight="10"
-                    refX="9"
-                    refY="3"
-                    orient="auto"
-                  >
-                    <polygon points="0 0, 10 3, 0 6" fill="rgb(168, 85, 247)" />
-                  </marker>
-                </defs>
-
-                {/* Circle path */}
+              {/* Enhanced grid layout with icons */}
+              <div className="grid grid-cols-6 border-b border-brand/10">
                 {[
-                  { angle: -90 },
-                  { angle: -18 },
-                  { angle: 54 },
-                  { angle: 126 },
-                  { angle: 198 }
-                ].map((node, index, arr) => {
-                  const radius = 130;
-                  const cx = 200;
-                  const cy = 200;
-
-                  const x1 = cx + radius * Math.cos((node.angle * Math.PI) / 180);
-                  const y1 = cy + radius * Math.sin((node.angle * Math.PI) / 180);
-
-                  const nextAngle = arr[(index + 1) % arr.length].angle;
-                  const x2 = cx + radius * Math.cos((nextAngle * Math.PI) / 180);
-                  const y2 = cy + radius * Math.sin((nextAngle * Math.PI) / 180);
-
-                  const midAngle = (node.angle + nextAngle) / 2;
-                  const controlRadius = radius * 1.0;
-                  const controlX = cx + controlRadius * Math.cos((midAngle * Math.PI) / 180);
-                  const controlY = cy + controlRadius * Math.sin((midAngle * Math.PI) / 180);
-
-                  return (
-                    <path
-                      key={index}
-                      d={`M ${x1} ${y1} Q ${controlX} ${controlY} ${x2} ${y2}`}
-                      stroke="rgb(168, 85, 247)"
-                      strokeWidth="2"
-                      fill="none"
-                      markerEnd="url(#arrowhead)"
-                      opacity="0.4"
-                    />
-                  );
-                })}
-
-                {/* Center circle */}
-                <circle cx="200" cy="200" r="40" fill="rgb(168, 85, 247)" fillOpacity="0.1" stroke="rgb(168, 85, 247)" strokeWidth="2" />
-              </svg>
-
-              {/* Center Loop Icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-4xl text-brand">↻</span>
-              </div>
-
-              {/* Nodes positioned in circle */}
-              {[
-                { label: 'Usage', angle: -90 },
-                { label: 'PRs', angle: -18 },
-                { label: 'Visibility', angle: 54 },
-                { label: 'Teams', angle: 126 },
-                { label: 'Features', angle: 198 }
-              ].map((node) => {
-                const radius = 130;
-                const x = 200 + radius * Math.cos((node.angle * Math.PI) / 180);
-                const y = 200 + radius * Math.sin((node.angle * Math.PI) / 180);
-
-                return (
+                  {
+                    label: 'Usage',
+                    subtitle: 'Teams adopt',
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    label: 'PRs',
+                    subtitle: 'More merges',
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                      </svg>
+                    )
+                  },
+                  {
+                    label: 'Visibility',
+                    subtitle: 'Word spreads',
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    label: 'Teams',
+                    subtitle: 'More join',
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    label: 'Features',
+                    subtitle: 'Ship faster',
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    label: 'Repeat',
+                    subtitle: '',
+                    icon: (
+                      <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                    )
+                  }
+                ].map((node, index, arr) => (
                   <div
                     key={node.label}
-                    className="absolute"
-                    style={{
-                      left: `${(x / 400) * 100}%`,
-                      top: `${(y / 400) * 100}%`,
-                      transform: 'translate(-50%, -50%)'
-                    }}
+                    className={`p-8 lg:p-12 hover:bg-brand/10 transition-colors ${index < arr.length - 1 ? 'border-r border-brand/10' : ''}`}
                   >
-                    <div className="px-4 py-2 bg-background border-2 border-brand/40 rounded-lg shadow-lg">
-                      <div className="text-sm font-semibold text-foreground whitespace-nowrap">
-                        {node.label}
+                    <div className="flex flex-col items-center text-center space-y-4">
+                      <div className="text-brand/70">
+                        <div className="w-12 h-12 lg:w-16 lg:h-16">
+                          {node.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-lg lg:text-xl font-bold text-foreground mb-2">{node.label}</div>
+                        <div className="text-sm lg:text-base text-muted-foreground leading-tight">{node.subtitle}</div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
+                ))}
+              </div>
         </div>
       </div>
     </section>

@@ -3,8 +3,8 @@ import Hero from "@/components/Hero";
 import UnfairInsight from "@/components/UnfairInsight";
 import TechnicalBreakthrough from "@/components/TechnicalBreakthrough";
 import Roadmap from "@/components/Roadmap";
-import WhyNow from "@/components/WhyNow";
 import CompetitiveLandscape from "@/components/CompetitiveLandscape";
+import WhyMe from "@/components/WhyMe";
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
         <UnfairInsight />
         <TechnicalBreakthrough />
         <Roadmap />
-        <WhyNow />
         <CompetitiveLandscape />
+        <WhyMe />
       </main>
     </div>
   );

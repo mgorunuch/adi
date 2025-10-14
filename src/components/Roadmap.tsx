@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Roadmap() {
   const timeline = [
     { year: '2024', quarter: 'Q3', label: 'Q3 2024' },
@@ -5,46 +7,96 @@ export default function Roadmap() {
     { year: '', quarter: 'Q4', label: 'Q4 2024' },
     { year: '2025', quarter: 'Q1', label: 'Q1 2025' },
     { year: '', quarter: 'Q2', label: 'Q2 2025' },
-    { year: '', quarter: 'Q3', label: 'Q3 2025' },
-    { year: '', quarter: 'Q4', label: 'Q4 2025' },
-    { year: '2026', quarter: 'Q1', label: 'Q1 2026' }
+    { year: '', quarter: '→', label: 'Continuous Growth' }
   ];
 
-  const milestones = [
+  const marketingMilestones = [
     {
       position: 0,
-      title: 'Discovery & First Agent',
-      capabilities: 'Initial prototype, single-issue automation',
+      title: 'Problem Discovery',
+      capabilities: '20+ dev teams interviewed',
       status: 'complete',
       date: 'Q3 2024'
     },
     {
       position: 1,
-      title: 'Two-Way MR Integration',
-      capabilities: 'Bidirectional sync, autonomous PR workflow',
+      title: 'Private Beta',
+      capabilities: '2 companies, 50+ issues automated',
       status: 'current',
       date: 'Oct 2024'
     },
     {
       position: 2,
-      title: 'Multi-Issue Context',
-      capabilities: 'Cross-issue understanding, batch processing',
+      title: 'GitHub Launch',
+      capabilities: 'Open source, HackerNews, Reddit',
       status: 'upcoming',
       date: 'Q4 2024'
     },
     {
       position: 3,
-      title: 'Team Collaboration',
-      capabilities: 'Multi-agent coordination, code review automation',
+      title: 'Paid Launch',
+      capabilities: '$50/mo hosted, first 100 customers',
       status: 'upcoming',
       date: 'Q1 2025'
     },
     {
       position: 4,
-      title: 'Enterprise Features',
-      capabilities: 'SSO, audit logs, SLAs, dedicated support',
+      title: 'Enterprise',
+      capabilities: 'Custom pricing, SOC2',
       status: 'upcoming',
       date: 'Q2 2025'
+    },
+    {
+      position: 5,
+      title: 'Growth',
+      capabilities: 'Integrations marketplace',
+      status: 'upcoming',
+      date: '2025+'
+    }
+  ];
+
+  const productMilestones = [
+    {
+      position: 0,
+      title: 'MVP',
+      capabilities: 'GitLab sync, single issue',
+      status: 'complete',
+      date: 'Q3 2024'
+    },
+    {
+      position: 1,
+      title: 'Bidirectional MR',
+      capabilities: 'Auto PR, code review, merge',
+      status: 'current',
+      date: 'Oct 2024'
+    },
+    {
+      position: 2,
+      title: 'Batch Processing',
+      capabilities: '10+ issues parallel',
+      status: 'upcoming',
+      date: 'Q4 2024'
+    },
+    {
+      position: 3,
+      title: 'Team Mode',
+      capabilities: 'Agent per dev, coordination',
+      status: 'upcoming',
+      date: 'Q1 2025'
+    },
+    {
+      position: 4,
+      title: 'Enterprise',
+      capabilities: 'SSO, audit logs, private deploy',
+      status: 'upcoming',
+      date: 'Q2 2025'
+    },
+    {
+      position: 5,
+      title: 'Platform',
+      capabilities: 'GitHub, Jira, Linear support',
+      status: 'upcoming',
+      date: '2025+'
     }
   ];
 
@@ -59,36 +111,69 @@ export default function Roadmap() {
 
       <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
         <div className="p-6 sm:p-8 md:p-12 lg:p-16">
-          <div className="max-w-6xl mx-auto">
+          <div className="w-full mx-auto">
             {/* Desktop Layout */}
-            <div className="hidden md:grid lg:grid-cols-[200px_1fr] gap-8 sm:gap-12">
-              {/* Left: Timeline */}
-              <div className="grid grid-cols-[1fr_auto_auto] gap-4">
-                {/* Year labels (left) */}
-                <div className="pt-3 text-right">
-                  {timeline.map((item, index) => {
-                    const hasMilestone = milestones.some(m => m.position === index);
-                    return (
-                      <div key={index} className="h-24 flex items-center justify-end">
+            <div className="hidden md:block">
+              {/* One big grid */}
+              <div className="grid grid-cols-[1fr_auto_auto_auto_1fr] gap-x-4 gap-y-8">
+                {/* Headers */}
+                <div className="text-sm font-bold text-brand tracking-wider text-right mb-4">MARKETING</div>
+                <div></div>
+                <div className="relative"></div>
+                <div></div>
+                <div className="text-sm font-bold text-brand tracking-wider mb-4">PRODUCT</div>
+
+                {/* Timeline Rows */}
+                {timeline.map((timeItem, timeIndex) => {
+                  const marketing = marketingMilestones.find(m => m.position === timeIndex);
+                  const product = productMilestones.find(m => m.position === timeIndex);
+                  const milestone = marketing || product;
+                  const hasMilestone = !!milestone;
+
+                  return (
+                    <React.Fragment key={timeIndex}>
+                      {/* Left: Marketing Milestone */}
+                      <div className="text-right space-y-2 flex flex-col justify-center">
+                        {marketing && (
+                          <>
+                            <div className="flex items-center justify-end gap-3">
+                              {marketing.status === 'current' && (
+                                <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded animate-pulse">
+                                  We are here →
+                                </div>
+                              )}
+                              {marketing.status === 'complete' && (
+                                <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded">
+                                  ✓ Complete
+                                </div>
+                              )}
+                              <div className="text-xl font-bold text-foreground">
+                                {marketing.title}
+                              </div>
+                            </div>
+                            <div className="text-xs text-muted-foreground font-semibold">
+                              {marketing.date}
+                            </div>
+                            <div className="text-sm text-muted-foreground leading-relaxed">
+                              {marketing.capabilities}
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Year */}
+                      <div className="flex items-center justify-end">
                         <div className={`text-sm font-medium ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
-                          {item.year}
+                          {timeItem.year}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
 
-                {/* Vertical Timeline */}
-                <div className="relative pt-3">
-                  <div className="absolute left-1/2 -ml-px top-3 bottom-0 w-px bg-gradient-to-b from-brand via-brand/40 to-brand/10"></div>
-
-                  {timeline.map((item, index) => {
-                    const hasMilestone = milestones.some(m => m.position === index);
-                    const milestone = milestones.find(m => m.position === index);
-                    return (
-                      <div key={index} className="relative h-24 flex items-center justify-center">
+                      {/* Center: Timeline Dot */}
+                      <div className="relative flex items-center justify-center">
+                        {/* Vertical line segment that extends into gaps */}
+                        <div className="absolute left-1/2 -ml-px -top-4 -bottom-4 w-px bg-brand/40 -z-10"></div>
                         {hasMilestone && (
-                          <div className="relative">
+                          <div className="relative z-10">
                             <div className={`w-4 h-4 rounded-full flex items-center justify-center ${
                               milestone?.status === 'complete' ? 'bg-green-500' :
                               milestone?.status === 'current' ? 'bg-brand ring-4 ring-brand/20 animate-pulse' :
@@ -106,106 +191,158 @@ export default function Roadmap() {
                           </div>
                         )}
                       </div>
-                    );
-                  })}
-                </div>
 
-                {/* Quarter labels (right) */}
-                <div className="pt-3">
-                  {timeline.map((item, index) => {
-                    const hasMilestone = milestones.some(m => m.position === index);
-                    return (
-                      <div key={index} className="h-24 flex items-center">
+                      {/* Quarter */}
+                      <div className="flex items-center">
                         <div className={`text-sm font-medium ${hasMilestone ? 'text-foreground' : 'text-muted-foreground'}`}>
-                          {item.quarter}
+                          {timeItem.quarter}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
 
-              {/* Right: Milestone Content */}
-              <div className="relative pt-3">
-                {milestones.map((milestone, index) => (
-                  <div
-                    key={index}
-                    className="absolute space-y-2"
-                    style={{ top: `${milestone.position * 96 + 44}px` }}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="text-xl font-bold text-foreground">
-                        {milestone.title}
+                      {/* Right: Product Milestone */}
+                      <div className="space-y-2 flex flex-col justify-center">
+                        {product && (
+                          <>
+                            <div className="flex items-center gap-3">
+                              <div className="text-xl font-bold text-foreground">
+                                {product.title}
+                              </div>
+                              {product.status === 'current' && (
+                                <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded animate-pulse">
+                                  ← We are here
+                                </div>
+                              )}
+                              {product.status === 'complete' && (
+                                <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded">
+                                  ✓ Complete
+                                </div>
+                              )}
+                            </div>
+                            <div className="text-xs text-muted-foreground font-semibold">
+                              {product.date}
+                            </div>
+                            <div className="text-sm text-muted-foreground leading-relaxed">
+                              {product.capabilities}
+                            </div>
+                          </>
+                        )}
                       </div>
-                      {milestone.status === 'current' && (
-                        <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded animate-pulse">
-                          ← You are here
-                        </div>
-                      )}
-                      {milestone.status === 'complete' && (
-                        <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded">
-                          ✓ Complete
-                        </div>
-                      )}
-                    </div>
-                    <div className="text-xs text-muted-foreground font-semibold">
-                      {milestone.date}
-                    </div>
-                    <div className="text-sm text-muted-foreground leading-relaxed">
-                      {milestone.capabilities}
-                    </div>
-                  </div>
-                ))}
+                    </React.Fragment>
+                  );
+                })}
               </div>
             </div>
 
             {/* Mobile Layout - Simplified cards */}
-            <div className="md:hidden space-y-6">
-              {milestones.map((milestone, index) => (
-                <div key={index} className={`border rounded-lg p-6 ${
-                  milestone.status === 'current' ? 'border-brand bg-brand/5' :
-                  milestone.status === 'complete' ? 'border-green-500/50 bg-green-500/5' :
-                  'border-brand/20 bg-black/[0.01]'
-                }`}>
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
-                      milestone.status === 'complete' ? 'bg-green-500' :
-                      milestone.status === 'current' ? 'bg-brand ring-4 ring-brand/20 animate-pulse' :
-                      'bg-background border-2 border-brand/60'
-                    }`}>
-                      {milestone.status === 'complete' && (
-                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                      {milestone.status === 'current' && (
-                        <div className="w-3 h-3 rounded-full bg-white"></div>
-                      )}
+            <div className="md:hidden space-y-8">
+              {timeline.map((timeItem, timeIndex) => {
+                const marketing = marketingMilestones.find(m => m.position === timeIndex);
+                const product = productMilestones.find(m => m.position === timeIndex);
+
+                if (!marketing && !product) return null;
+
+                return (
+                  <div key={timeIndex} className="space-y-4">
+                    <div className="text-center">
+                      <div className="text-sm font-bold text-brand">{timeItem.label}</div>
                     </div>
-                    <div className="flex-1">
-                      <div className="text-xs text-muted-foreground mb-2 font-semibold">
-                        {milestone.date}
-                      </div>
-                      <div className="text-xl font-bold text-foreground mb-2">
-                        {milestone.title}
-                      </div>
-                      {milestone.status === 'current' && (
-                        <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded mb-2">
-                          ← You are here
+
+                    {/* Marketing Card */}
+                    {marketing && (
+                      <div className={`border rounded-lg p-6 ${
+                        marketing.status === 'current' ? 'border-brand bg-brand/5' :
+                        marketing.status === 'complete' ? 'border-green-500/50 bg-green-500/5' :
+                        'border-brand/20 bg-black/[0.01]'
+                      }`}>
+                        <div className="mb-2">
+                          <div className="text-xs text-brand font-bold mb-2">MARKETING</div>
+                          <div className="flex items-start gap-4">
+                            <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+                              marketing.status === 'complete' ? 'bg-green-500' :
+                              marketing.status === 'current' ? 'bg-brand ring-4 ring-brand/20 animate-pulse' :
+                              'bg-background border-2 border-brand/60'
+                            }`}>
+                              {marketing.status === 'complete' && (
+                                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                              {marketing.status === 'current' && (
+                                <div className="w-3 h-3 rounded-full bg-white"></div>
+                              )}
+                            </div>
+                            <div className="flex-1">
+                              <div className="text-xl font-bold text-foreground mb-2">
+                                {marketing.title}
+                              </div>
+                              {marketing.status === 'current' && (
+                                <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded mb-2">
+                                  ← We are here
+                                </div>
+                              )}
+                              {marketing.status === 'complete' && (
+                                <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded mb-2">
+                                  ✓ Complete
+                                </div>
+                              )}
+                            </div>
+                          </div>
                         </div>
-                      )}
-                      {milestone.status === 'complete' && (
-                        <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded mb-2">
-                          ✓ Complete
+                        <div className="text-sm text-muted-foreground leading-relaxed">
+                          {marketing.capabilities}
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
+
+                    {/* Product Card */}
+                    {product && (
+                      <div className={`border rounded-lg p-6 ${
+                        product.status === 'current' ? 'border-brand bg-brand/5' :
+                        product.status === 'complete' ? 'border-green-500/50 bg-green-500/5' :
+                        'border-brand/20 bg-black/[0.01]'
+                      }`}>
+                        <div className="mb-2">
+                          <div className="text-xs text-brand font-bold mb-2">PRODUCT</div>
+                          <div className="flex items-start gap-4">
+                            <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
+                              product.status === 'complete' ? 'bg-green-500' :
+                              product.status === 'current' ? 'bg-brand ring-4 ring-brand/20 animate-pulse' :
+                              'bg-background border-2 border-brand/60'
+                            }`}>
+                              {product.status === 'complete' && (
+                                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                              {product.status === 'current' && (
+                                <div className="w-3 h-3 rounded-full bg-white"></div>
+                              )}
+                            </div>
+                            <div className="flex-1">
+                              <div className="text-xl font-bold text-foreground mb-2">
+                                {product.title}
+                              </div>
+                              {product.status === 'current' && (
+                                <div className="inline-block px-2 py-1 bg-brand text-white text-xs font-bold rounded mb-2">
+                                  ← We are here
+                                </div>
+                              )}
+                              {product.status === 'complete' && (
+                                <div className="inline-block px-2 py-1 bg-green-500/20 text-green-500 text-xs font-bold rounded mb-2">
+                                  ✓ Complete
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-sm text-muted-foreground leading-relaxed">
+                          {product.capabilities}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className="text-sm text-muted-foreground leading-relaxed">
-                    {milestone.capabilities}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

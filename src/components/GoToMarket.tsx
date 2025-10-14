@@ -55,15 +55,6 @@ export default function GoToMarket() {
     }
   ];
 
-  const growthLoop = [
-    'Open source users',
-    'Try in production',
-    'See value',
-    'Upgrade to Cloud',
-    'Become advocates',
-    'Refer others'
-  ];
-
   return (
     <section id="go-to-market" className="max-w-7xl mx-auto border-x border-brand/10">
       {/* Heading */}
@@ -143,52 +134,6 @@ export default function GoToMarket() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </div>
-
-      {/* Growth Loop */}
-      <div className="border-b border-brand/10 bg-gradient-to-b from-transparent via-black/[0.02] to-transparent">
-        <div className="p-6 sm:p-8 lg:p-12">
-          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center">
-            Growth Loop
-          </h3>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-0 border border-brand/20">
-              {growthLoop.map((step, idx) => (
-                <div
-                  key={step}
-                  className={`p-4 sm:p-6 lg:p-8 hover:bg-brand/10 transition-colors relative ${
-                    idx < 3 ? 'border-b sm:border-b-0' : ''
-                  } ${
-                    idx % 2 === 0 ? 'border-r border-brand/20' : ''
-                  } ${
-                    idx < 4 ? 'lg:border-b-0' : ''
-                  } ${
-                    idx < 5 ? 'lg:border-r lg:border-brand/20' : ''
-                  }`}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand/20 flex items-center justify-center mb-3">
-                      <span className="text-brand font-bold text-sm sm:text-base">{idx + 1}</span>
-                    </div>
-                    <div className="text-xs sm:text-sm font-semibold text-foreground leading-tight">
-                      {step}
-                    </div>
-                  </div>
-                  {idx < growthLoop.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-0 transform translate-x-1/2 -translate-y-1/2 text-brand/40">
-                      →
-                    </div>
-                  )}
-                  {idx === growthLoop.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 left-1/2 transform translate-y-12 text-brand/40 text-2xl">
-                      ↻
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

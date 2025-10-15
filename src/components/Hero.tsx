@@ -220,6 +220,10 @@ export default function Hero() {
           <div className="pt-2 sm:pt-4">
             <div className="text-xs sm:text-sm text-muted-foreground mb-2">Now</div>
             <div className="text-xl sm:text-2xl md:text-3xl font-bold">2 companies testing production backlogs</div>
+            <div className="mt-4 pt-4 border-t border-brand/20">
+              <div className="text-xs sm:text-sm text-muted-foreground mb-2">Vision (2026)</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold">7,000 teams · $750K ARR</div>
+            </div>
           </div>
         </div>
 

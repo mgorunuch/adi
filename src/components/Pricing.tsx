@@ -208,15 +208,44 @@ export default function Pricing() {
                 </div>
               </div>
 
+              {/* Revenue Forecast */}
+              <div className="mt-6 sm:mt-8">
+                <h4 className="text-xs sm:text-sm font-bold text-foreground uppercase tracking-wider mb-4 sm:mb-6 text-center">
+                  2026 Revenue Forecast
+                </h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                  <div className="border border-brand/10 rounded-lg p-4 bg-black/[0.01] text-center">
+                    <div className="text-xs text-muted-foreground mb-2">Q1 2026</div>
+                    <div className="text-lg sm:text-xl font-bold text-brand mb-1">$3K</div>
+                    <div className="text-[10px] text-muted-foreground">50 teams × $62.50</div>
+                  </div>
+                  <div className="border border-brand/10 rounded-lg p-4 bg-black/[0.01] text-center">
+                    <div className="text-xs text-muted-foreground mb-2">Q2 2026</div>
+                    <div className="text-lg sm:text-xl font-bold text-brand mb-1">$12.5K</div>
+                    <div className="text-[10px] text-muted-foreground">200 teams × $62.50</div>
+                  </div>
+                  <div className="border border-brand/10 rounded-lg p-4 bg-black/[0.01] text-center">
+                    <div className="text-xs text-muted-foreground mb-2">Q3 2026</div>
+                    <div className="text-lg sm:text-xl font-bold text-brand mb-1">$37K</div>
+                    <div className="text-[10px] text-muted-foreground">600 teams × $62.50</div>
+                  </div>
+                  <div className="border border-brand/10 rounded-lg p-4 bg-black/[0.01] text-center">
+                    <div className="text-xs text-muted-foreground mb-2">Q4 2026</div>
+                    <div className="text-lg sm:text-xl font-bold text-brand mb-1">$130K</div>
+                    <div className="text-[10px] text-muted-foreground">2,100 teams × $62.50</div>
+                  </div>
+                </div>
+              </div>
+
               {/* Path to Scale */}
               <div className="mt-6 sm:mt-8 text-center">
                 <div className="inline-block border border-brand/10 rounded-lg px-4 py-3 sm:px-6 sm:py-4 bg-black/[0.01]">
                   <div className="text-[10px] sm:text-xs text-muted-foreground mb-1 sm:mb-2 uppercase tracking-wider font-semibold">
-                    Path to $1M ARR
+                    End 2026 ARR Target
                   </div>
-                  <div className="text-xl sm:text-2xl font-bold text-brand">~1,350 paying users</div>
+                  <div className="text-xl sm:text-2xl font-bold text-brand">$500K-750K</div>
                   <div className="text-[10px] sm:text-xs text-muted-foreground mt-1">
-                    at $62.50 ARPU (2.5M tokens/month avg)
+                    2,100 paying teams at $62.50 ARPU
                   </div>
                 </div>
               </div>

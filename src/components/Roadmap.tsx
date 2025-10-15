@@ -21,28 +21,28 @@ export default function Roadmap() {
     {
       position: 1,
       title: 'Private Beta',
-      capabilities: '2 companies, 50+ issues automated',
+      capabilities: 'Target: 5 companies, 100+ issues automated',
       status: 'current',
       date: 'Oct 2025'
     },
     {
       position: 2,
       title: 'GitHub Launch',
-      capabilities: 'Open source, HackerNews, Reddit',
+      capabilities: 'Target: 10K stars, 100 beta teams',
       status: 'upcoming',
       date: 'Q4 2025'
     },
     {
       position: 3,
       title: 'Paid Launch',
-      capabilities: '$50/mo hosted, first 100 customers',
+      capabilities: 'Target: 500 teams, $3K MRR',
       status: 'upcoming',
       date: 'Q1 2026'
     },
     {
       position: 4,
       title: 'Enterprise',
-      capabilities: 'Custom pricing, SOC2',
+      capabilities: 'Target: 2,100 teams, $130K MRR',
       status: 'upcoming',
       date: 'Q2 2026'
     },

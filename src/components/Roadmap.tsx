@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function Roadmap() {
   const timeline = [
-    { year: '2024', quarter: 'Q3', label: 'Q3 2024' },
-    { year: '', quarter: 'Oct', label: 'Oct 2024' },
-    { year: '', quarter: 'Q4', label: 'Q4 2024' },
-    { year: '2025', quarter: 'Q1', label: 'Q1 2025' },
-    { year: '', quarter: 'Q2', label: 'Q2 2025' },
+    { year: '2025', quarter: 'Q3', label: 'Q3 2025' },
+    { year: '', quarter: 'Oct', label: 'Oct 2025' },
+    { year: '', quarter: 'Q4', label: 'Q4 2025' },
+    { year: '2026', quarter: 'Q1', label: 'Q1 2026' },
+    { year: '', quarter: 'Q2', label: 'Q2 2026' },
     { year: '', quarter: '→', label: 'Continuous Growth' }
   ];
 
@@ -16,42 +16,42 @@ export default function Roadmap() {
       title: 'Problem Discovery',
       capabilities: '20+ dev teams interviewed',
       status: 'complete',
-      date: 'Q3 2024'
+      date: 'Q3 2025'
     },
     {
       position: 1,
       title: 'Private Beta',
       capabilities: '2 companies, 50+ issues automated',
       status: 'current',
-      date: 'Oct 2024'
+      date: 'Oct 2025'
     },
     {
       position: 2,
       title: 'GitHub Launch',
       capabilities: 'Open source, HackerNews, Reddit',
       status: 'upcoming',
-      date: 'Q4 2024'
+      date: 'Q4 2025'
     },
     {
       position: 3,
       title: 'Paid Launch',
       capabilities: '$50/mo hosted, first 100 customers',
       status: 'upcoming',
-      date: 'Q1 2025'
+      date: 'Q1 2026'
     },
     {
       position: 4,
       title: 'Enterprise',
       capabilities: 'Custom pricing, SOC2',
       status: 'upcoming',
-      date: 'Q2 2025'
+      date: 'Q2 2026'
     },
     {
       position: 5,
       title: 'Growth',
       capabilities: 'Integrations marketplace',
       status: 'upcoming',
-      date: '2025+'
+      date: '2026+'
     }
   ];
 
@@ -61,42 +61,42 @@ export default function Roadmap() {
       title: 'MVP',
       capabilities: 'GitLab sync, single issue',
       status: 'complete',
-      date: 'Q3 2024'
+      date: 'Q3 2025'
     },
     {
       position: 1,
       title: 'Bidirectional MR',
       capabilities: 'Auto PR, code review, merge',
       status: 'current',
-      date: 'Oct 2024'
+      date: 'Oct 2025'
     },
     {
       position: 2,
       title: 'Batch Processing',
       capabilities: '10+ issues parallel',
       status: 'upcoming',
-      date: 'Q4 2024'
+      date: 'Q4 2025'
     },
     {
       position: 3,
       title: 'Team Mode',
       capabilities: 'Agent per dev, coordination',
       status: 'upcoming',
-      date: 'Q1 2025'
+      date: 'Q1 2026'
     },
     {
       position: 4,
       title: 'Enterprise',
       capabilities: 'SSO, audit logs, private deploy',
       status: 'upcoming',
-      date: 'Q2 2025'
+      date: 'Q2 2026'
     },
     {
       position: 5,
       title: 'Platform',
       capabilities: 'GitHub, Jira, Linear support',
       status: 'upcoming',
-      date: '2025+'
+      date: '2026+'
     }
   ];
 

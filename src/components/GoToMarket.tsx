@@ -3,25 +3,25 @@ import { FaGithub, FaRocket, FaStore, FaBullhorn } from 'react-icons/fa';
 export default function GoToMarket() {
   const phases = [
     {
-      title: 'Now (Oct 2024)',
+      title: 'Now (Oct 2025)',
       subtitle: 'Private Beta',
       description: '2 companies testing production backlogs. Proving autonomous workflow.',
       status: 'current'
     },
     {
-      title: 'Q4 2024',
+      title: 'Q4 2025',
       subtitle: 'Public Beta + Open Source Launch',
       description: 'GitHub public release. Community building. Beta waitlist opens.',
       status: 'upcoming'
     },
     {
-      title: 'Q1 2025',
+      title: 'Q1 2026',
       subtitle: 'Managed Cloud GA',
       description: 'Usage-based pricing live. Integration marketplace listings.',
       status: 'upcoming'
     },
     {
-      title: 'Q2 2025',
+      title: 'Q2 2026',
       subtitle: 'Enterprise Ready',
       description: 'SSO, audit logs, SLAs. Dedicated support.',
       status: 'upcoming'
